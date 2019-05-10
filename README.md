@@ -1,4 +1,4 @@
-# Torrent and Install
+# Torrent Search and Install
 
 Install deps
 
