@@ -61,7 +61,7 @@ async function getTorrent () {
       console.error(chalk.yellow(`No torrents found for "${chalk.bold(query)}", try another query.`))
       continue
     }
-    return utils.prompt.title('Which torrent?', torrents)
+    return utils.promptTitle('Which torrent?', torrents)
   }
 }
 

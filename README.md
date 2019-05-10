@@ -1,13 +1,15 @@
 # Torrent Search and Install
 
-A tool that lets you search for torrents and open their magnet URL in your torrent client without leaving your CLI.
+A tool that lets you to find torrents without leaving your CLI.
+
+**NOTE** This app may not work with Windows.
 
 ## Usage
-Install deps
+Install dependencies
 
 `npm i`
 
-Run CLI app
+Start the CLI tool
 
 `npm start`
 

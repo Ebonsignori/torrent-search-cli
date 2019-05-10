@@ -1,7 +1,7 @@
 module.exports = {
   method: {
     clipboard: false, // Copy magnet link to clipboard
-    openInApp: false, // Open in utorrent (change openInApp prop with name of default app)
+    openInApp: false, // Open in utorrent (change this prop with name of default app e.g. 'utorrent')
     openInDefault: true // Open in default browser
   },
   torrents: {
