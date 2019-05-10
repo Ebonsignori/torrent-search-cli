@@ -1,6 +1,6 @@
 # Torrent Search and Install
 
-A tool that lets you to find torrents without leaving your CLI.
+A tool that lets you find torrents without leaving your CLI.
 
 **NOTE** This app may not work with Windows.
 
