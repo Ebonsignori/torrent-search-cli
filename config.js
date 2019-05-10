@@ -4,7 +4,6 @@ module.exports = {
     openInApp: false, // Open in utorrent (change openInApp prop with name of default app)
     openInDefault: true // Open in default browser
   },
-  openInApp: 'utorrent',
   torrents: {
     limit: 30, // Number of torrents to display
     details: {

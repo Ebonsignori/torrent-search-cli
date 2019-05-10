@@ -1,7 +1,8 @@
 # Torrent Search and Install
 
-A tool that lets you search for torrents and open their magnet url in your torrent client without leaving your CLI. 
+A tool that lets you search for torrents and open their magnet URL in your torrent client without leaving your CLI.
 
+## Usage
 Install deps
 
 `npm i`

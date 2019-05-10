@@ -79,7 +79,7 @@ async function download (magnet, torrent) {
     clipboardy.writeSync(magnet)
   }
   if (config.method.openInApp) {
-    await open(magnet, { app: config.openInApp })
+    await open(magnet, { app: config.method.openInApp })
   }
   if (config.method.openInDefault) {
     await open(magnet)
