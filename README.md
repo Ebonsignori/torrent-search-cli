@@ -13,7 +13,7 @@ Run CLI app
 Checkout the options in [config.js](./config.js)
 
 Chose what you want to do with the torrent file
-```json
+```javascript
 method: {
   clipboard: false, // Copy magnet link to clipboard
   openInApp: false, // Open in utorrent (change openInApp prop with name of default app)
@@ -22,7 +22,7 @@ method: {
 ```
 
 Chose your preferred provider
-```json
+```javascript
 providers: {
   available: ['1337x', 'ThePirateBay', 'ExtraTorrent', 'Rarbg', 'Torrent9', 'KickassTorrents', 'TorrentProject', 'Torrentz2'],
   active: '1337x'
