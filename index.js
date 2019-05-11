@@ -9,7 +9,20 @@ const open = require('open')
 const config = require('./config')
 const utils = require('./utils')
 
-async function wizard (isNext) {
+const options = {
+  openDefault: config.method.openInDefault,
+  clipboard: config.method.clipboard,
+  openApp: config.method.openInApp
+}
+
+function overWriteOptions (cliOpts) {
+  for (const entry of Object.entries(cliOpts)) {
+    if (typeof entry[1] !== 'undefined') options[entry[0]] = entry[1]
+  }
+}
+
+async function wizard (isNext, searchQuery, category, provider, rows, cliOpts) {
+  if (cliOpts) overWriteOptions(cliOpts)
   // Ask use if they want to continue if after first iteration
   if (isNext) {
     const choices = ['Yes', 'No']
@@ -22,13 +35,15 @@ async function wizard (isNext) {
     if (shouldContinuePrompt.choice === choices[1]) process.exit(0)
   }
 
-  const torrent = await getTorrent()
+  let torrent
+  let inquirerResp = await getTorrent(searchQuery, category, provider, rows)
+  if (inquirerResp) torrent = inquirerResp.selection
   const magnet = await getMagnet(torrent)
   if (!magnet) return console.error(chalk.red('Magnet not found.'))
   return download(magnet, torrent)
 }
 
-async function getTorrents (query, rows = config.torrents.limit, provider = config.torrents.providers.active, providers = config.torrents.providers.available) {
+async function getTorrents (query, category, provider = config.torrents.providers.active, providers = config.torrents.providers.available, rows = config.torrents.limit) {
   const hasProvider = !!provider
   if (!provider) {
     provider = await inquirer.prompt({
@@ -44,7 +59,8 @@ async function getTorrents (query, rows = config.torrents.limit, provider = conf
   try {
     TorrentSearchApi.disableAllProviders()
     TorrentSearchApi.enableProvider(provider)
-    const torrents = await TorrentSearchApi.search(query, 'All', rows)
+    if (!category) category = 'All'
+    const torrents = await TorrentSearchApi.search(query, category, rows)
     spinner.stop()
     if (!torrents.length) throw new Error('No torrents found.')
     return torrents
@@ -53,22 +69,29 @@ async function getTorrents (query, rows = config.torrents.limit, provider = conf
     console.error(chalk.yellow(`No torrents found via "${chalk.bold(provider)}"`))
     const nextProviders = _.without(providers, provider)
     const nextProvider = hasProvider ? providers[providers.indexOf(provider) + 1] : ''
-    if (!nextProvider && !nextProviders.length) return []
-    return getTorrents(query, rows, nextProvider, nextProviders)
+    if (!nextProvider || !nextProviders.length) return []
+    return getTorrents(query, category, nextProvider, nextProviders, rows)
   }
 }
 
-async function getTorrent () {
+async function getTorrent (withQuery, category, provider, rows) {
+  let searchString = ''
   while (true) {
-    let query = await inquirer.prompt({
-      type: 'input',
-      name: 'input',
-      message: 'What do you want to download?'
-    })
-    query = query.input
-    const torrents = await getTorrents(query)
-    if (!torrents.length) {
-      console.error(chalk.yellow(`No torrents found for "${chalk.bold(query)}", try another query.`))
+    if (!withQuery) {
+      let query = await inquirer.prompt({
+        type: 'input',
+        name: 'input',
+        message: 'What do you want to download?'
+      })
+      searchString = query.input
+    } else {
+      searchString = withQuery
+    }
+    const torrents = await getTorrents(searchString, category, provider, undefined, rows)
+    if (!torrents || !torrents.length) {
+      console.error(chalk.yellow(`No torrents found for "${chalk.bold(searchString)}" in category: "${category}", try another query.`))
+      withQuery = undefined
+      category = undefined
       continue
     }
     return utils.promptTitle('Which torrent?', torrents)
@@ -84,18 +107,19 @@ async function getMagnet (torrent) {
 }
 
 async function download (magnet, torrent) {
-  if (config.method.clipboard) {
+  if (options.clipboard) {
     console.log(chalk.bold('Magnet link for ') + chalk.cyan(torrent.title) + chalk.bold(' copied to clipboard.'))
     clipboardy.writeSync(magnet)
   }
-  if (config.method.openInApp) {
-    await open(magnet, { app: config.method.openInApp })
-  }
-  if (config.method.openInDefault) {
+  if (options.openApp) {
+    await open(magnet, { app: options.openApp })
+  } else if (options.openDefault) {
     await open(magnet)
   }
   return wizard(true)
 }
 
-// Entry Point
-wizard()
+module.exports = {
+  wizard,
+  getTorrent
+}

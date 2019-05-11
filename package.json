@@ -2,9 +2,10 @@
   "name": "torrenter",
   "version": "1.0.0",
   "description": "Search and download torrents from cli",
-  "main": "index.js",
+  "main": "cli.js",
+  "bin": "cli.js",
   "scripts": {
-    "start": "node ./index.js"
+    "start": "node ./cli.js"
   },
   "author": "Evan Bonsignori",
   "license": "ISC",
@@ -15,11 +16,11 @@
     "filesize-parser": "^1.5.0",
     "inquirer": "^6.3.1",
     "lodash": "^4.17.11",
-    "node-torrent": "^0.2.2",
     "open": "^6.2.0",
     "ora": "^3.4.0",
     "prettysize": "^2.0.0",
     "sywac": "^1.2.1",
+    "sywac-style-basic": "^1.0.1",
     "torrent-search-api": "^2.0.8",
     "window-size": "^1.1.1"
   }
