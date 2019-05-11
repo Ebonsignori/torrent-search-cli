@@ -1,6 +1,5 @@
 const _ = require('lodash')
 const inquirer = require('inquirer')
-const prompt = require('inquirer-helpers')
 const TorrentSearchApi = require('torrent-search-api')
 const chalk = require('chalk')
 const ora = require('ora')
@@ -32,7 +31,13 @@ async function wizard (isNext) {
 async function getTorrents (query, rows = config.torrents.limit, provider = config.torrents.providers.active, providers = config.torrents.providers.available) {
   const hasProvider = !!provider
   if (!provider) {
-    provider = await prompt.list('Which torrents provider?', providers)
+    provider = await inquirer.prompt({
+      type: 'list',
+      name: 'selection',
+      message: 'Which torrents provider?',
+      choices: providers
+    })
+    provider = provider.selection
   }
 
   const spinner = ora(`Waiting for "${chalk.bold(provider)}"...`).start()
@@ -55,7 +60,12 @@ async function getTorrents (query, rows = config.torrents.limit, provider = conf
 
 async function getTorrent () {
   while (true) {
-    const query = await prompt.input('What do you want to download?')
+    let query = await inquirer.prompt({
+      type: 'input',
+      name: 'input',
+      message: 'What do you want to download?'
+    })
+    query = query.input
     const torrents = await getTorrents(query)
     if (!torrents.length) {
       console.error(chalk.yellow(`No torrents found for "${chalk.bold(query)}", try another query.`))

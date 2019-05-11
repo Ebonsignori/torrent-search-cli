@@ -1,8 +1,10 @@
 const _ = require('lodash')
 const inquirer = require('inquirer')
-const prompt = require('inquirer-helpers')
 const filesizeParser = require('filesize-parser')
 const prettySize = require('prettysize')
+const windowSize = require('window-size')
+const cliTruncate = require('cli-truncate')
+const chalk = require('chalk')
 
 const config = require('./config')
 
@@ -34,7 +36,14 @@ async function promptTitle (message, titles) {
   if (config.torrents.details.size && hasSize) colors.push('yellow')
   if (config.torrents.details.time && hasTime) colors.push('magenta')
 
-  return prompt.table(message, table, titles, colors)
+  const choices = toChoicesTable(table, colors)
+
+  return inquirer.prompt({
+    type: 'list',
+    name: 'selection',
+    message: 'Results: ',
+    choices
+  })
 }
 
 function parseTitle (title) {
@@ -51,6 +60,58 @@ function parseSize (size) {
   } catch (e) {
     return size
   }
+}
+
+function getCliWidth () {
+  return windowSize.get() || 80
+}
+
+function toChoicesTable (table, colors = []) {
+  const maxWidth = getCliWidth() - 7
+
+  // Truncate torrent names
+  table.map(row => cliTruncate(row[0], maxWidth))
+
+  if (table[0].length > 1) {
+    // Get max lengths for padding
+    const maxLengths = table[0].map((val, index) => _.max(table.map(row => String(row[index].length))))
+    const overflowCol = maxLengths.findIndex((length, index) => (_.sum(maxLengths.slice(0, index + 1)) + (index * 4)) > maxWidth)
+    const maxCol = overflowCol >= 0 ? Math.max(0, overflowCol - 1) : maxLengths.length - 1
+
+    // Filter
+    table = table.map(row => row.slice(0, maxCol + 1))
+
+    // Pad
+    table = table.map(row => {
+      return row.map((val, index) => {
+        const padFn = index > 0 ? _.padStart : _.padEnd
+        return padFn(val, maxLengths[index])
+      })
+    })
+
+    // Color
+    table = table.map(row => {
+      return row.map((val, index) => {
+        const color = colors[index]
+        if (!color) return val
+        return chalk[color](val)
+      })
+    })
+  }
+
+  // Build choice strings with separators
+  const choices = []
+  for (const row of table) {
+    let choice = ''
+    for (let i = 0; i < row.length; i++) {
+      let separator = ''
+      if (i > 1) separator = ' | '
+      const chalkColor = chalk[colors[i]] || chalk.bold
+      choice += separator + chalkColor(row[i])
+    }
+    choices.push(choice)
+  }
+  return choices
 }
 
 module.exports = {
