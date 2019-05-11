@@ -1,7 +1,7 @@
 {
-  "name": "torrenter",
+  "name": "torrent-search-cli",
   "version": "1.0.0",
-  "description": "Search and download torrents from cli",
+  "description": "Search and open torrents from your CLI",
   "main": "cli.js",
   "bin": "cli.js",
   "scripts": {
@@ -23,5 +23,9 @@
     "sywac-style-basic": "^1.0.1",
     "torrent-search-api": "^2.0.8",
     "window-size": "^1.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ebonsignori/torrent-search-cli"
   }
 }
