@@ -62,24 +62,10 @@ function parseSize (size) {
   }
 }
 
-function getCliWidth () {
-  return windowSize.get() || 80
-}
-
 function toChoicesTable (table, titles, colors = []) {
-  const maxWidth = getCliWidth() - 7
-
-  // Truncate torrent names
-  table.map(row => cliTruncate(row[0], maxWidth))
-
   if (table[0] && table[0].length > 1) {
     // Get max lengths for padding
     const maxLengths = table[0].map((val, index) => _.max(table.map(row => String(row[index] && row[index].length))))
-    const overflowCol = maxLengths.findIndex((length, index) => (_.sum(maxLengths.slice(0, index + 1)) + (index * 4)) > maxWidth)
-    const maxCol = overflowCol >= 0 ? Math.max(0, overflowCol - 1) : maxLengths.length - 1
-
-    // Filter
-    table = table.map(row => row.slice(0, maxCol + 1))
 
     // Pad
     table = table.map(row => {
@@ -107,19 +93,6 @@ function toChoicesTable (table, titles, colors = []) {
   }))
 
   return choices
-
-  // const choices = []
-  // for (const row of table) {
-  //   let choice = ''
-  //   for (let i = 0; i < row.length; i++) {
-  //     let separator = ''
-  //     if (i > 1) separator = ' | '
-  //     const chalkColor = chalk[colors[i]] || chalk.bold
-  //     choice += separator + chalkColor(row[i])
-  //   }
-  //   choices.push(choice)
-  // }
-  // return choices
 }
 
 module.exports = {

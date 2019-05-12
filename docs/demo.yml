@@ -109,7 +109,7 @@ config:
 # Records, feel free to edit them
 records:
   - delay: 100
-    content: "? "
+    content: "$ "
   - delay: 50
     content: .
   - delay: 50
@@ -272,5 +272,5 @@ records:
     content: "\e[2K\e[1A\e[2K\e[1A\e[2K\e[G\e[32m?\e[39m \e[1mFind another torrent?\e[22m\e[0m \e[0m\e[36mNo\e[39m\e[26D\e[26C\r\n\e[?25h\e[?25h"
   - delay: 500
     content: "$ "
-  - delay: 500
+  - delay: 5
     content: " "

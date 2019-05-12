@@ -21,8 +21,7 @@
     "prettysize": "^2.0.0",
     "sywac": "^1.2.1",
     "sywac-style-basic": "^1.0.1",
-    "torrent-search-api": "^2.0.8",
-    "window-size": "^1.1.1"
+    "torrent-search-api": "^2.0.8"
   },
   "repository": {
     "type": "git",
