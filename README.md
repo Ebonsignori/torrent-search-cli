@@ -14,7 +14,7 @@ Start the CLI tool with `npm start` or as an executable with `./cli.js`
 
 **NOTE:** Windows users can build an executable via `npm run build` into `./build/torrent-search.exe`.
 
-Run `./cli.js -h or npm start -- -h` to see the CLI options
+Run `./cli.js -h` or `npm start -- -h` to see the CLI options
 
 ![Usage -h](./docs/usage.png)
 
