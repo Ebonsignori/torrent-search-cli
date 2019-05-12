@@ -12,13 +12,13 @@ Navigate to the root directory and install dependencies with `npm install`
 
 Start the CLI tool with `npm start` or as an executable with `./cli.js`
 
-Run `./cli.js -h or npm start -- -h` toe see the CLI options
+Run `./cli.js -h or npm start -- -h` to see the CLI options
 
 ![Usage -h](./docs/usage.png)
 
 ## Example
 
-The command  showed in the gif above lists up to **35** results from the **1337x** provider. Instead of opening the magnet url by default (via `-o=false`), the command copies your selection's magnet url to your clipboard (via `--clipboard`).
+The command  showed in the gif above lists up to **35** results from the **1337x** provider. Instead of opening the magnet url by default (via `-o=false`), the command copies the magnet url of the torrent you select to your clipboard (via `--clipboard`).
 
 Give it a try,
 ```bash
