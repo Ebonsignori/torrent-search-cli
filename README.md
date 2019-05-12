@@ -2,7 +2,7 @@
 
 A tool that lets you find torrents without leaving your CLI.
 
-![Demo Gif](./docs/demo.gif)
+![Wizard Demo Gif](./docs/wizard-demo.gif)
 
 ## Usage
 
@@ -18,7 +18,9 @@ Run `./cli.js -h or npm start -- -h` toe see the CLI options
 
 ## Example
 
-The command  showed in the gif above lists up to **35** results from the **1337x** provider. Instead of opening the magnet url by default (via `-o=false`), the command copies your selection's magnet url to your clipboard (via `--clipboard`).
+The command  showed in the gif below lists up to **35** results from the **1337x** provider. Instead of opening the magnet url by default (via `-o=false`), the command copies your selection's magnet url to your clipboard (via `--clipboard`).
+
+![Demo Gif](./docs/demo.gif)
 
 Give it a try,
 ```bash

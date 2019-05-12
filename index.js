@@ -49,7 +49,7 @@ async function getTorrents (query, category, provider, providers = config.torren
     provider = await inquirer.prompt({
       type: config.listType,
       name: 'selection',
-      message: 'Which torrents provider would you like to start with?',
+      message: 'Which torrent provider would you like to start with?',
       choices: providers
     })
     provider = provider.selection

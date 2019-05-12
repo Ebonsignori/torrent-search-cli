@@ -1,0 +1,192 @@
+# The configurations that used for the recording, feel free to edit them
+config:
+
+  # Specify a command to be executed
+  # like `/bin/bash -l`, `ls`, or any other commands
+  # the default is bash for Linux
+  # or powershell.exe for Windows
+  command: bash -l
+  
+  # Specify the current working directory path
+  # the default is the current working directory path
+  cwd: /Users/ebonsignori_laptop/torrent-search-and-install
+  
+  # Export additional ENV variables
+  env:
+    recording: true
+  
+  # Explicitly set the number of columns
+  # or use `auto` to take the current
+  # number of columns of your shell
+  cols: 110
+  
+  # Explicitly set the number of rows
+  # or use `auto` to take the current
+  # number of rows of your shell
+  rows: 11
+  
+  # Amount of times to repeat GIF
+  # If value is -1, play once
+  # If value is 0, loop indefinitely
+  # If value is a positive number, loop n times
+  repeat: 0
+  
+  # Quality
+  # 1 - 100
+  quality: 100
+  
+  # Delay between frames in ms
+  # If the value is `auto` use the actual recording delays
+  frameDelay: auto
+  
+  # Maximum delay between frames in ms
+  # Ignored if the `frameDelay` isn't set to `auto`
+  # Set to `auto` to prevent limiting the max idle time
+  maxIdleTime: 2000
+  
+  # The surrounding frame box
+  # The `type` can be null, window, floating, or solid`
+  # To hide the title use the value null
+  # Don't forget to add a backgroundColor style with a null as type
+  frameBox:
+    type: window
+    title: Torrent Search CLI
+    style: []
+  
+  # Add a watermark image to the rendered gif
+  # You need to specify an absolute path for
+  # the image on your machine or a URL, and you can also
+  # add your own CSS styles
+  watermark:
+    imagePath: null
+    style:
+      position: absolute
+      right: 15px
+      bottom: 15px
+      width: 100px
+      opacity: 0.9
+  
+  # Cursor style can be one of
+  # `block`, `underline`, or `bar`
+  cursorStyle: block
+  
+  # Font family
+  # You can use any font that is installed on your machine
+  # in CSS-like syntax
+  fontFamily: "Monaco, Lucida Console, Ubuntu Mono, Monospace"
+  
+  # The size of the font
+  fontSize: 12
+  
+  # The height of lines
+  lineHeight: 1
+  
+  # The spacing between letters
+  letterSpacing: 0
+  
+  # Theme
+  theme:
+    background: "transparent"
+    foreground: "#afafaf"
+    cursor: "#c7c7c7"
+    black: "#232628"
+    red: "#fc4384"
+    green: "#b3e33b"
+    yellow: "#ffa727"
+    blue: "#75dff2"
+    magenta: "#ae89fe"
+    cyan: "#708387"
+    white: "#d5d5d0"
+    brightBlack: "#626566"
+    brightRed: "#ff7fac"
+    brightGreen: "#c8ed71"
+    brightYellow: "#ebdf86"
+    brightBlue: "#75dff2"
+    brightMagenta: "#ae89fe"
+    brightCyan: "#b1c6ca"
+    brightWhite: "#f9f9f4"
+  
+# Records, feel free to edit them
+records:
+  - delay: 5
+    content: "$ "
+  - delay: 50
+    content: .
+  - delay: 50
+    content: /
+  - delay: 50
+    content: c
+  - delay: 50
+    content: l
+  - delay: 50
+    content: i
+  - delay: 50
+    content: .
+  - delay: 50
+    content: j
+  - delay: 50
+    content: s
+  - delay: 250
+    content: "\r\n"
+  - delay: 250
+    content: "\e[32m?\e[39m \e[1mWhat do you want to download?\e[22m\e[0m \e[0m\e[32D\e[32C"
+  - delay: 1184
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mWhat do you want to download?\e[22m\e[0m \e[0mu\e[33D\e[33C"
+  - delay: 168
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mWhat do you want to download?\e[22m\e[0m \e[0mub\e[34D\e[34C"
+  - delay: 95
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mWhat do you want to download?\e[22m\e[0m \e[0mubu\e[35D\e[35C"
+  - delay: 161
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mWhat do you want to download?\e[22m\e[0m \e[0mubun\e[36D\e[36C"
+  - delay: 124
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mWhat do you want to download?\e[22m\e[0m \e[0mubunt\e[37D\e[37C"
+  - delay: 128
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mWhat do you want to download?\e[22m\e[0m \e[0mubuntu\e[38D\e[38C"
+  - delay: 288
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mWhat do you want to download?\e[22m\e[0m \e[0m\e[36mubuntu\e[39m\e[38D\e[38C\r\n"
+  - delay: 5
+    content: "\e[?25l\e[32m?\e[39m \e[1mWhich torrent provider would you like to start with?\e[22m\e[0m \e[0m\e[2m(Use arrow keys)\e[22m\r\n\e[36m❯ 1337x\e[39m \r\n  ThePirateBay \r\n  ExtraTorrent \r\n  Rarbg \r\n  Torrent9 \r\n  KickassTorrents \r\n  TorrentProject \r\n\e[2m(Move up and down to reveal more choices)\e[22m\e[41D\e[41C"
+  - delay: 1208
+    content: "\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G\e[32m?\e[39m \e[1mWhich torrent provider would you like to start with?\e[22m\e[0m \e[0m\e[36m1337x\e[39m\e[61D\e[61C\r\n\e[?25h\e[?25l\e[36m⠋\e[39m Waiting for \"\e[1m1337x\e[22m\"..."
+  - delay: 82
+    content: "\e[2K\e[1G\e[36m⠙\e[39m Waiting for \"\e[1m1337x\e[22m\"..."
+  - delay: 84
+    content: "\e[2K\e[1G\e[36m⠹\e[39m Waiting for \"\e[1m1337x\e[22m\"..."
+  - delay: 85
+    content: "\e[2K\e[1G\e[36m⠸\e[39m Waiting for \"\e[1m1337x\e[22m\"..."
+  - delay: 83
+    content: "\e[2K\e[1G\e[36m⠼\e[39m Waiting for \"\e[1m1337x\e[22m\"..."
+  - delay: 85
+    content: "\e[2K\e[1G\e[36m⠴\e[39m Waiting for \"\e[1m1337x\e[22m\"..."
+  - delay: 83
+    content: "\e[2K\e[1G\e[36m⠦\e[39m Waiting for \"\e[1m1337x\e[22m\"..."
+  - delay: 119
+    content: "\e[2K\e[1G\e[36m⠧\e[39m Waiting for \"\e[1m1337x\e[22m\"..."
+  - delay: 81
+    content: "\e[2K\e[1G\e[36m⠇\e[39m Waiting for \"\e[1m1337x\e[22m\"..."
+  - delay: 80
+    content: "\e[2K\e[1G\e[36m⠏\e[39m Waiting for \"\e[1m1337x\e[22m\"..."
+  - delay: 82
+    content: "\e[2K\e[1G\e[36m⠋\e[39m Waiting for \"\e[1m1337x\e[22m\"..."
+  - delay: 111
+    content: "\e[2K\e[1G\e[36m⠙\e[39m Waiting for \"\e[1m1337x\e[22m\"...\e[2K\e[1G\e[?25h\e[?25l\e[32m?\e[39m \e[1mWhich torrent?\e[22m\e[0m \e[0m\e[2m(Use arrow keys)\e[22m\r\n\e[36m❯ | Ubuntu MATE 16.04.2 [MATE][armhf][img.xz][Uzerus]                                | \e[32m260\e[36m | \e[31m2\e[36m | \e[33m  1.1G\e[36m |\e[39m \r\n  | A Practical Guide to Ubuntu Linux, 3rd Edition (PDF)                             | \e[32m81\e[39m | \e[31m3\e[39m | \e[33m   77M\e[39m | \r\n  | Ubuntu 16.04.1 LTS Desktop 64-bit                                                | \e[32m55\e[39m | \e[31m2\e[39m | \e[33m  1.4G\e[39m | \r\n  | Udemy - The Complete Ubuntu Linux Server Administration Course                   | \e[32m42\e[39m | \e[31m12\e[39m | \e[33m    1G\e[39m | \r\n  | Ubuntu 16.10 LTS [Yakkety Yak][Unity][x32 i386][Desktop][ISO][Uzerus]            | \e[32m34\e[39m | \e[31m2\e[39m | \e[33m  1.5G\e[39m | \r\n  | BDM’s Series: The Complete Ubuntu Manual, Vol.10 2018                            | \e[32m24\e[39m | \e[31m2\e[39m | \e[33m   53M\e[39m | \r\n  | The Official Ubuntu Book (8th Edition)                                           | \e[32m22\e[39m | \e[31m0\e[39m | \e[33m  6.8M\e[39m | \r\n\e[2m(Move up and down to reveal more choices)\e[22m\e[41D\e[41C"
+  - delay: 596
+    content: "\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G\e[32m?\e[39m \e[1mWhich torrent?\e[22m\e[0m \e[0m\r\n  | Ubuntu MATE 16.04.2 [MATE][armhf][img.xz][Uzerus]                                | \e[32m260\e[39m | \e[31m2\e[39m | \e[33m  1.1G\e[39m | \r\n\e[36m❯ | A Practical Guide to Ubuntu Linux, 3rd Edition (PDF)                             | \e[32m81\e[36m | \e[31m3\e[36m | \e[33m   77M\e[36m |\e[39m \r\n  | Ubuntu 16.04.1 LTS Desktop 64-bit                                                | \e[32m55\e[39m | \e[31m2\e[39m | \e[33m  1.4G\e[39m | \r\n  | Udemy - The Complete Ubuntu Linux Server Administration Course                   | \e[32m42\e[39m | \e[31m12\e[39m | \e[33m    1G\e[39m | \r\n  | Ubuntu 16.10 LTS [Yakkety Yak][Unity][x32 i386][Desktop][ISO][Uzerus]            | \e[32m34\e[39m | \e[31m2\e[39m | \e[33m  1.5G\e[39m | \r\n  | BDM’s Series: The Complete Ubuntu Manual, Vol.10 2018                            | \e[32m24\e[39m | \e[31m2\e[39m | \e[33m   53M\e[39m | \r\n  | The Official Ubuntu Book (8th Edition)                                           | \e[32m22\e[39m | \e[31m0\e[39m | \e[33m  6.8M\e[39m | \r\n\e[2m(Move up and down to reveal more choices)\e[22m\e[41D\e[41C"
+  - delay: 293
+    content: "\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G\e[32m?\e[39m \e[1mWhich torrent?\e[22m\e[0m \e[0m\r\n  | Ubuntu MATE 16.04.2 [MATE][armhf][img.xz][Uzerus]                                | \e[32m260\e[39m | \e[31m2\e[39m | \e[33m  1.1G\e[39m | \r\n  | A Practical Guide to Ubuntu Linux, 3rd Edition (PDF)                             | \e[32m81\e[39m | \e[31m3\e[39m | \e[33m   77M\e[39m | \r\n\e[36m❯ | Ubuntu 16.04.1 LTS Desktop 64-bit                                                | \e[32m55\e[36m | \e[31m2\e[36m | \e[33m  1.4G\e[36m |\e[39m \r\n  | Udemy - The Complete Ubuntu Linux Server Administration Course                   | \e[32m42\e[39m | \e[31m12\e[39m | \e[33m    1G\e[39m | \r\n  | Ubuntu 16.10 LTS [Yakkety Yak][Unity][x32 i386][Desktop][ISO][Uzerus]            | \e[32m34\e[39m | \e[31m2\e[39m | \e[33m  1.5G\e[39m | \r\n  | BDM’s Series: The Complete Ubuntu Manual, Vol.10 2018                            | \e[32m24\e[39m | \e[31m2\e[39m | \e[33m   53M\e[39m | \r\n  | The Official Ubuntu Book (8th Edition)                                           | \e[32m22\e[39m | \e[31m0\e[39m | \e[33m  6.8M\e[39m | \r\n\e[2m(Move up and down to reveal more choices)\e[22m\e[41D\e[41C"
+  - delay: 353
+    content: "\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G\e[32m?\e[39m \e[1mWhich torrent?\e[22m\e[0m \e[0m\r\n  | Hacking Ubuntu Serious Hacks Mods and Customizations                             | \e[32m0\e[39m | \e[31m0\e[39m | \e[33m  9.7M\e[39m | \r\n  | Ubuntu MATE 16.04.2 [MATE][armhf][img.xz][Uzerus]                                | \e[32m260\e[39m | \e[31m2\e[39m | \e[33m  1.1G\e[39m | \r\n\e[36m❯ | A Practical Guide to Ubuntu Linux, 3rd Edition (PDF)                             | \e[32m81\e[36m | \e[31m3\e[36m | \e[33m   77M\e[36m |\e[39m \r\n  | Ubuntu 16.04.1 LTS Desktop 64-bit                                                | \e[32m55\e[39m | \e[31m2\e[39m | \e[33m  1.4G\e[39m | \r\n  | Udemy - The Complete Ubuntu Linux Server Administration Course                   | \e[32m42\e[39m | \e[31m12\e[39m | \e[33m    1G\e[39m | \r\n  | Ubuntu 16.10 LTS [Yakkety Yak][Unity][x32 i386][Desktop][ISO][Uzerus]            | \e[32m34\e[39m | \e[31m2\e[39m | \e[33m  1.5G\e[39m | \r\n  | BDM’s Series: The Complete Ubuntu Manual, Vol.10 2018                            | \e[32m24\e[39m | \e[31m2\e[39m | \e[33m   53M\e[39m | \r\n\e[2m(Move up and down to reveal more choices)\e[22m\e[41D\e[41C"
+  - delay: 176
+    content: "\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G\e[32m?\e[39m \e[1mWhich torrent?\e[22m\e[0m \e[0m\r\n  | Sams.Ubuntu.7.10.Linux.Unleashed 2008 1337x                                      | \e[32m0\e[39m | \e[31m0\e[39m | \e[33m 12.2M\e[39m | \r\n  | Hacking Ubuntu Serious Hacks Mods and Customizations                             | \e[32m0\e[39m | \e[31m0\e[39m | \e[33m  9.7M\e[39m | \r\n\e[36m❯ | Ubuntu MATE 16.04.2 [MATE][armhf][img.xz][Uzerus]                                | \e[32m260\e[36m | \e[31m2\e[36m | \e[33m  1.1G\e[36m |\e[39m \r\n  | A Practical Guide to Ubuntu Linux, 3rd Edition (PDF)                             | \e[32m81\e[39m | \e[31m3\e[39m | \e[33m   77M\e[39m | \r\n  | Ubuntu 16.04.1 LTS Desktop 64-bit                                                | \e[32m55\e[39m | \e[31m2\e[39m | \e[33m  1.4G\e[39m | \r\n  | Udemy - The Complete Ubuntu Linux Server Administration Course                   | \e[32m42\e[39m | \e[31m12\e[39m | \e[33m    1G\e[39m | \r\n  | Ubuntu 16.10 LTS [Yakkety Yak][Unity][x32 i386][Desktop][ISO][Uzerus]            | \e[32m34\e[39m | \e[31m2\e[39m | \e[33m  1.5G\e[39m | \r\n\e[2m(Move up and down to reveal more choices)\e[22m\e[41D\e[41C"
+  - delay: 756
+    content: "\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G\e[32m?\e[39m \e[1mWhich torrent?\e[22m\e[0m \e[0m\e[36mUbuntu MATE 16.04.2 [MATE][armhf][img.xz][Uzerus]\e[39m\e[66D\e[66C\r\n\e[?25h"
+  - delay: 664
+    content: "\e[?25l\e[32m?\e[39m \e[1mFind another torrent?\e[22m\e[0m \e[0m\e[2m(Use arrow keys)\e[22m\r\n\e[36m❯ Yes\e[39m \r\n  No \e[5D\e[5C"
+  - delay: 3097
+    content: "\e[2K\e[1A\e[2K\e[1A\e[2K\e[G\e[32m?\e[39m \e[1mFind another torrent?\e[22m\e[0m \e[0m\r\n  Yes \r\n\e[36m❯ No\e[39m \e[5D\e[5C"
+  - delay: 637
+    content: "\e[2K\e[1A\e[2K\e[1A\e[2K\e[G\e[32m?\e[39m \e[1mFind another torrent?\e[22m\e[0m \e[0m\e[36mNo\e[39m\e[26D\e[26C\r\n\e[?25h\e[?25h"
+  - delay: 250
+    content: "? "
+  - delay: 250
+    content: " "
