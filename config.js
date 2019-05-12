@@ -1,3 +1,5 @@
+const isWindows = /^win/.test(process.platform)
+
 module.exports = {
   method: {
     clipboard: false, // Copy magnet link to clipboard
@@ -17,5 +19,6 @@ module.exports = {
       available: ['1337x', 'ThePirateBay', 'ExtraTorrent', 'Rarbg', 'Torrent9', 'KickassTorrents', 'TorrentProject', 'Torrentz2'],
       active: '1337x'
     }
-  }
+  },
+  listType: isWindows ? 'rawlist' : 'list'
 }

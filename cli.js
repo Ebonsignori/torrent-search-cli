@@ -34,8 +34,7 @@ const cli = require('sywac')
   })
   .enumeration('-p, --provider', {
     desc: 'Specify the provider the try first',
-    choices: ['1337x', 'ThePirateBay', 'ExtraTorrent', 'Rarbg', 'Torrent9', 'KickassTorrents', 'TorrentProject', 'Torrentz2'],
-    defaultValue: '1337x'
+    choices: ['1337x', 'ThePirateBay', 'ExtraTorrent', 'Rarbg', 'Torrent9', 'KickassTorrents', 'TorrentProject', 'Torrentz2']
   })
   .number('-r, --rows', {
     desc: 'Number of rows to list in search',

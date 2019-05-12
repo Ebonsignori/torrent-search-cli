@@ -18,9 +18,14 @@ Run `./cli.js -h or npm start -- -h` toe see the CLI options
 
 ## Example
 
-The command  showed in the gif above lists 35 results from the `1337x` provider. Select an item from the list to copy your selection's magnet url to your clipboard.
+The command  showed in the gif above lists up to **35** results from the **1337x** provider. Instead of opening the magnet url by default (via `-o=false`), the command copies your selection's magnet url to your clipboard (via `--clipboard`).
 
 Give it a try,
 ```bash
 ./cli.js ubuntu -p='1337x' -o=false  --rows=35 --clipboard
 ```
+
+## TODO
+
+- Add default configs in home directory that can be edited with the following command `./cli.js config <option> <value>`
+- Use **node-torrent** or similar lib to actually download torrents

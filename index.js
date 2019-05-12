@@ -27,7 +27,7 @@ async function wizard (isNext, searchQuery, category, provider, rows, cliOpts) {
   if (isNext) {
     const choices = ['Yes', 'No']
     const shouldContinuePrompt = await inquirer.prompt({
-      type: 'list',
+      type: config.listType,
       name: 'choice',
       message: 'Find another torrent?',
       choices
@@ -43,13 +43,13 @@ async function wizard (isNext, searchQuery, category, provider, rows, cliOpts) {
   return download(magnet, torrent)
 }
 
-async function getTorrents (query, category, provider = config.torrents.providers.active, providers = config.torrents.providers.available, rows = config.torrents.limit) {
+async function getTorrents (query, category, provider, providers = config.torrents.providers.available, rows = config.torrents.limit) {
   const hasProvider = !!provider
   if (!provider) {
     provider = await inquirer.prompt({
-      type: 'list',
+      type: config.listType,
       name: 'selection',
-      message: 'Which torrents provider?',
+      message: 'Which torrents provider would you like to start with?',
       choices: providers
     })
     provider = provider.selection

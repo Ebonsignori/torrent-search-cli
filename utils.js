@@ -2,8 +2,6 @@ const _ = require('lodash')
 const inquirer = require('inquirer')
 const filesizeParser = require('filesize-parser')
 const prettySize = require('prettysize')
-const windowSize = require('window-size')
-const cliTruncate = require('cli-truncate')
 const chalk = require('chalk')
 
 const config = require('./config')
@@ -39,7 +37,7 @@ async function promptTitle (message, titles) {
   const choices = toChoicesTable(table, titles, colors)
 
   return inquirer.prompt({
-    type: 'list',
+    type: config.listType,
     name: 'selection',
     message,
     choices

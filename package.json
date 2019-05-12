@@ -5,7 +5,8 @@
   "main": "cli.js",
   "bin": "cli.js",
   "scripts": {
-    "start": "node ./cli.js"
+    "start": "node ./cli.js",
+    "lint": "standard"
   },
   "author": "Evan Bonsignori",
   "license": "ISC",
@@ -26,5 +27,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/Ebonsignori/torrent-search-cli"
+  },
+  "devDependencies": {
+    "standard": "^12.0.1"
   }
 }
