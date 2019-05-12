@@ -2,17 +2,17 @@
   "name": "torrent-search-cli",
   "version": "1.0.0",
   "description": "Search and open torrents from your CLI",
-  "main": "cli.js",
-  "bin": "cli.js",
+  "main": "./cli.js",
+  "bin": "./cli.js",
   "scripts": {
     "start": "node ./cli.js",
-    "lint": "standard"
+    "lint": "standard",
+    "build": "nexe ./cli.js -o build/torrent-search.exe"
   },
   "author": "Evan Bonsignori",
   "license": "ISC",
   "dependencies": {
     "chalk": "^2.4.2",
-    "cli-truncate": "^1.1.0",
     "clipboardy": "^2.0.0",
     "filesize-parser": "^1.5.0",
     "inquirer": "^6.3.1",
@@ -24,11 +24,12 @@
     "sywac-style-basic": "^1.0.1",
     "torrent-search-api": "^2.0.8"
   },
+  "devDependencies": {
+    "nexe": "^3.2.0",
+    "standard": "^12.0.1"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Ebonsignori/torrent-search-cli"
-  },
-  "devDependencies": {
-    "standard": "^12.0.1"
   }
 }
