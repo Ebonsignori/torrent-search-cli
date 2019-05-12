@@ -20,6 +20,8 @@ Run `./cli.js -h or npm start -- -h` to see the CLI options
 
 The command  showed in the gif above lists up to **35** results from the **1337x** provider. Instead of opening the magnet url by default (via `-o=false`), the command copies the magnet url of the torrent you select to your clipboard (via `--clipboard`).
 
+![Demo Command Gif](./docs/demo.gif)
+
 Give it a try,
 ```bash
 ./cli.js ubuntu -p='1337x' -o=false  --rows=35 --clipboard
