@@ -66,6 +66,8 @@ async function main () {
     clipboard: argv.clipboard,
     openApp: argv.openApp
   }
+  // If space-separated strings were entered in search, join them together
+  if (argv.search && argv._) argv.search = [argv.search, ...argv._].join(' ')
   // When nothing is passed in, the wizard will ask the user to search
   index.wizard(false, argv.search, argv.category, argv.provider, argv.rows, argv.truncate, cliOptions)
 }
