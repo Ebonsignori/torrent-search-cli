@@ -11,12 +11,12 @@ const cli = require('sywac')
   // TODO: Include home dir config where defaults can be set
   // If config command is run, change config
   // .command('config <option> <value>', {
-  //   desc: 'Change config of specified option',
+  //   desc: 'Change config of specified option.',
   //   params: [{
-  //     desc: 'Config option to change',
+  //     desc: 'Config option to change.',
   //     choices: ['openInDefault', 'openInApp', 'copyToClipBoard']
   //   }, {
-  //     desc: 'Value to set option to',
+  //     desc: 'Value to set option to.',
   //     choices: ['true', 'false'],
   //     defaultValue: 'true'
   //   }],
@@ -28,29 +28,33 @@ const cli = require('sywac')
   .style(require('sywac-style-basic'))
   .outputSettings({ maxWidth: 100 })
   .enumeration('-c, --cat, --category', {
-    desc: 'Limit torrent search to a category (some providers use different categories)',
+    desc: 'Limit torrent search to a category (some providers use different categories).',
     choices: ['All', 'Movies', 'TV', 'Music', 'Games', 'Apps', 'Books', 'Top100'],
     defaultValue: 'All'
   })
   .enumeration('-p, --provider', {
-    desc: 'Specify the provider the try first',
+    desc: 'Specify the first provider to search.',
     choices: ['1337x', 'ThePirateBay', 'ExtraTorrent', 'Rarbg', 'Torrent9', 'KickassTorrents', 'TorrentProject', 'Torrentz2']
   })
   .number('-r, --rows', {
-    desc: 'Number of rows to list in search',
+    desc: 'Number of rows to list in search.',
     defaultValue: 30
+  })
+  .number('-t, --truncate', {
+    desc: 'Number of characters to show before truncating torrent titles.',
+    defaultValue: 40
   })
   // TODO: Remove some of these options in favor of a config.json that lives in home dir
   .boolean('-b, --copy, --clipboard', {
-    desc: 'Include to copy the torrent magnet url to your clipboard',
+    desc: `Copy selected torrent's magnet url to your clipboard.`,
     defaultValue: false
   })
   .boolean('-o, --default, --openDefault', {
-    desc: 'Open torrent in default torrent app',
+    desc: 'Open selected torrent in default torrent app.',
     defaultValue: true
   })
   .string('-a, --app, --openApp', {
-    desc: 'Name of app to open torrent in (e.g. "utorrent") (overrides openDefault)'
+    desc: 'Name of app to open selected torrent in (e.g. "utorrent"). Overrides --openDefault flag.'
   })
   .help('-h, --help')
   .version('-v, --version')
@@ -63,7 +67,7 @@ async function main () {
     openApp: argv.openApp
   }
   // When nothing is passed in, the wizard will ask the user to search
-  index.wizard(false, argv.search, argv.category, argv.provider, argv.rows, cliOptions)
+  index.wizard(false, argv.search, argv.category, argv.provider, argv.rows, argv.truncate, cliOptions)
 }
 
 if (require.main === module) {

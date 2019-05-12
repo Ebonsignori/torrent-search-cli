@@ -21,7 +21,7 @@ function overWriteOptions (cliOpts) {
   }
 }
 
-async function wizard (isNext, searchQuery, category, provider, rows, cliOpts) {
+async function wizard (isNext, searchQuery, category, provider, rows, truncateLength, cliOpts) {
   if (cliOpts) overWriteOptions(cliOpts)
   // Ask use if they want to continue if after first iteration
   if (isNext) {
@@ -36,7 +36,7 @@ async function wizard (isNext, searchQuery, category, provider, rows, cliOpts) {
   }
 
   let torrent
-  let inquirerResp = await getTorrent(searchQuery, category, provider, rows)
+  let inquirerResp = await getTorrent(searchQuery, category, provider, rows, truncateLength)
   if (inquirerResp) torrent = inquirerResp.selection
   const magnet = await getMagnet(torrent)
   if (!magnet) return console.error(chalk.red('Magnet not found.'))
@@ -74,7 +74,7 @@ async function getTorrents (query, category, provider, providers = config.torren
   }
 }
 
-async function getTorrent (withQuery, category, provider, rows) {
+async function getTorrent (withQuery, category, provider, rows, truncateLength) {
   let searchString = ''
   while (true) {
     if (!withQuery) {
@@ -94,7 +94,7 @@ async function getTorrent (withQuery, category, provider, rows) {
       category = undefined
       continue
     }
-    return utils.promptTitle('Which torrent?', torrents)
+    return utils.promptTitle('Which torrent?', torrents, truncateLength)
   }
 }
 

@@ -6,7 +6,7 @@ const chalk = require('chalk')
 
 const config = require('./config')
 
-async function promptTitle (message, titles) {
+async function promptTitle (message, titles, truncateLength) {
   /* CHECKS */
   const hasSeeders = titles[0] && _.isNumber(titles[0].seeds)
   const hasLeechers = titles[0] && _.isNumber(titles[0].peers)
@@ -34,7 +34,7 @@ async function promptTitle (message, titles) {
   if (config.torrents.details.size && hasSize) colors.push('yellow')
   if (config.torrents.details.time && hasTime) colors.push('magenta')
 
-  const choices = toChoicesTable(table, titles, colors)
+  const choices = toChoicesTable(table, titles, colors, truncateLength)
 
   return inquirer.prompt({
     type: config.listType,
@@ -60,8 +60,15 @@ function parseSize (size) {
   }
 }
 
-function toChoicesTable (table, titles, colors = []) {
+function toChoicesTable (table, titles, colors = [], truncateLength) {
   if (table[0] && table[0].length > 1) {
+    // Shorten title names
+    for (const row of table) {
+      row[0] = _.truncate(row[0], {
+        length: truncateLength
+      })
+    }
+
     // Get max lengths for padding
     const maxLengths = table[0].map((val, index) => _.max(table.map(row => String(row[index] && row[index].length))))
 
