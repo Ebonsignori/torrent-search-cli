@@ -31,5 +31,7 @@ Give it a try,
 
 ## TODO
 
+- Fallback to another provider when no results are found
+- Select category via wizard & map categories to each provider. Default to all if no mapping exists.
 - Add default configs in home directory that can be edited with the following command `./cli.js config <option> <value>`
 - Use **node-torrent** or similar lib to actually download torrents
